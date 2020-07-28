@@ -26,16 +26,16 @@ public class OrdenadorDeFuncionarios {
         System.out.println("A soma dos funcionários que começam com a letra 'M' é: "+somaDosSalariosDosFuncionariosCujoONomeComecamComALetraM);
     }
 
-    private static BigDecimal somarSalariosDosFuncionariosCujoONomeComecamComALetraM() {
-        return listaDeFuncionarios.stream().filter(funcionario -> funcionario.getNome().charAt(0) == 'M').map(funcionario -> funcionario.getSalario()).reduce(new BigDecimal("0.00"), (x, y) ->  x.add(y)).setScale(2, RoundingMode.HALF_EVEN);
+    private static String obterDados(String mensagemAoUsuario) {
+        System.out.println(mensagemAoUsuario);
+        return scanner.nextLine();
     }
 
     private static void ordenarPorOrdemAlfabeticaEComBaseNoSalario(BigDecimal salarioBase) {
         listaDeEMailsDeFuncionariosEmOrdemAlfabetica = listaDeFuncionarios.stream().filter(funcionario -> funcionario.getSalario().compareTo(salarioBase) > 0).map(funcionario -> funcionario.getEmail()).sorted((x, y) -> x.compareTo(y)).collect(Collectors.toList());
     }
 
-    private static String obterDados(String mensagemAoUsuario) {
-        System.out.println(mensagemAoUsuario);
-        return scanner.nextLine();
+    private static BigDecimal somarSalariosDosFuncionariosCujoONomeComecamComALetraM() {
+        return listaDeFuncionarios.stream().filter(funcionario -> funcionario.getNome().charAt(0) == 'M').map(funcionario -> funcionario.getSalario()).reduce(new BigDecimal("0.00"), (x, y) ->  x.add(y)).setScale(2, RoundingMode.HALF_EVEN);
     }
 }
